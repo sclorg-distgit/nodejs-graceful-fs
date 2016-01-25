@@ -3,10 +3,10 @@
 %{?nodejs_find_provides_and_requires}
 
 Name:       %{?scl_prefix}nodejs-graceful-fs
-Version:    3.0.5
-Release:    2%{?dist}
+Version:    4.1.2
+Release:    3%{?dist}
 Summary:    'fs' module with incremental back-off on EMFILE
-License:    BSD
+License:    ISC
 Group:      Development/Libraries
 URL:        https://github.com/isaacs/node-graceful-fs
 Source0:    http://registry.npmjs.org/graceful-fs/-/graceful-fs-%{version}.tgz
@@ -32,7 +32,7 @@ lots and lots of files.
 rm -rf %{buildroot}
 
 mkdir -p %{buildroot}%{nodejs_sitelib}/graceful-fs
-cp -p fs.js graceful-fs.js package.json polyfills.js \
+cp -p fs.js graceful-fs.js package.json polyfills.js legacy-streams.js \
     %{buildroot}%{nodejs_sitelib}/graceful-fs
 
 %nodejs_symlink_deps
@@ -46,6 +46,12 @@ rm -rf %{buildroot}
 %doc README.md LICENSE
 
 %changelog
+* Wed Dec 09 2015 Tomas Hrcka <thrcka@redhat.com> - 4.1.2-3
+- Reflect Upstream License
+
+* Mon Nov 30 2015 Tomas Hrcka <thrcka@redhat.com> - 4.1.2-2
+- New upstream release
+
 * Tue Jan 13 2015 Tomas Hrcka <thrcka@redhat.com> - 3.0.5-2
 - Add missing source file fs.js
 
